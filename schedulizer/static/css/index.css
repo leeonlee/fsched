@@ -143,6 +143,7 @@ nav a:focus {
 	transform: translateY(0px);
 }
 
+/* icon rows */
 #icon{
 	position:absolute;
 	top: 300px;
@@ -158,4 +159,50 @@ nav a:focus {
 	text-align: center;
 }
 
+/* inputDars */
+.login{
+	position: relative;
+	top: 50px;
+	height:300px;
+	width: 710px;
+}
+
+.left{
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	left: 0;
+	background: #528c63;
+}
+
+.left .script{
+	position:absolute;
+	top:100px;
+	left: 50px;
+	font-size: 25px;
+}
+
+.left .bubrain{
+	position:absolute;
+	top:125px;
+	left: 35px;
+	font-size: 60px;
+}
+
+.right{
+	position: absolute;
+	padding-top: 50px;
+	height: 300px;
+	width: 400px;
+	right: 0;
+	background: #707176;
+}
+
+.user, .password, .button{
+	position: relative;
+	margin-top: 10px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+}
 
