@@ -9,9 +9,9 @@
 		<title> {% block title %} {% endblock %} </title>
 	</head>
 	<body>
-		<table id="wrapper">
+		<table id="banner">
 			<tr>
-				<td><img class = "banner" src="{% static "img/BANNER.png" %}"/></td>
+				<td><img src="{% static "img/BANNER.png" %}"/></td>
 			</tr>
 		</table>
 		<div class="borders">
@@ -19,6 +19,7 @@
 		{% block extrajs %} {% endblock %}
 		</div>
 
+		<div id="footer-banner"></div>
 		<div id="footer">
 			<div class="container">
 				<ul>
