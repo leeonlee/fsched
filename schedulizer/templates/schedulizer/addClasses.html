@@ -7,4 +7,12 @@
 	</tr>
 </table>
 
+<div class='container'>
+	<form action="/addclasses/" method="post">{% csrf_token %}
+	{{form.course}}
+	<button class="btn btn-lg btn-primary btn-block button" type="submit">Sign in</button>
+	</form>
+</div>
+
+
 {% endblock %}
