@@ -1,0 +1,13 @@
+{% load staticfiles %}
+<html>
+	<head>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet" media="screen">
+		{% block extraheaders %} {% endblock %}
+		<title> {% block title %} {% endblock %} </title>
+	</head>
+	<body>
+		{% block content %} {% endblock %}
+		{% block extrajs %} {% endblock %}
+	</body>
+</html>
