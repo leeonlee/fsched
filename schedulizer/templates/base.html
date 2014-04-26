@@ -9,10 +9,26 @@
 		<title> {% block title %} {% endblock %} </title>
 	</head>
 	<body>
+		<table id="wrapper">
+			<tr>
+				<td><img class = "banner" src="{% static "img/BANNER.png" %}"/></td>
+			</tr>
+		</table>
 		<div class="borders">
 		{% block content %} {% endblock %}
 		{% block extrajs %} {% endblock %}
 		</div>
+
+		<div id="footer">
+			<div class="container">
+				<ul>
+					<li><a href="/" class="text-muted text-spacing">The Team</a></li>
+					<li><a href="/" class="text-muted text-spacing">Contact</a></li>
+					<li><a href="/" class="text-muted text-spacing">Schedulizer &copy;</a></li>
+				</ul>
+			</div>
+		</div>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>

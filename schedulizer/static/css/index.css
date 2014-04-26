@@ -2,20 +2,63 @@ body {
 	background: #f0ece1;
 }
 
+#wrapper{
+	border: 1px red dashed;
+	position:absolute;
+	top: 10px;
+	z-index: 1;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#wrapper td{
+	vertical-align: middle;
+	text-align: center;
+}
+
 .borders{
 	position:absolute;
+	z-index: 0;
 	height: 100%;
 	width: 100%;
-	border: 20px #505155 solid;
+	/* outest border */
+	border: 15px #505155 solid;
 }
 
 .borders::before{
 	position:absolute;
 	display:block;
 	content:'';
+	/* hack to get the darker second color */
 	outline: 5px #333438 solid;
 	height: 100%;
 	width: 100%;
-	border: 40px #505155 solid;
+	/* left right bottom borders */
+	border: 25px #505155 solid;
+	/* top border */
+	border-top: 80px #505155 solid;
     box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+}
+
+#footer{
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	bottom: 0;
+	background-color: #333438;
+}
+
+#footer ul{
+	margin: 20px auto;
+	padding: 0;
+	display: table;
+	list-style: none;
+}
+
+#footer ul li{
+	float: left;
+	padding-right: 25px;
+	z-index: 1;
 }
