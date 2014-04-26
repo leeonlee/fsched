@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.alert import Alert
 from bs4 import BeautifulSoup
+import re
 from schedulizer.models import *
 import datetime
 import os
@@ -94,6 +95,9 @@ class Command(BaseCommand):
 						start = start,
 						end = end,	
 					)
+					result = re.search('(A|B)? ?(\w+)', course['Sec'])
+					newCourse.sec, newCourse.secNum = result.groups()
+					print result.groups()
 					if course['Attribute'] is not None:
 						print course['Attribute']
 						attributes = course['Attribute'].replace('Joined Comp and Oral Comm', 'comp').replace('Both Phys Act and Wellness', 'phys')

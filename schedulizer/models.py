@@ -25,6 +25,8 @@ class Course(models.Model):
 	credits = models.IntegerField()
 	instructor = models.CharField(max_length=255)
 	desc = models.CharField(max_length=255)
+	sec = models.CharField(max_length=255, null=True, blank=True)
+	secNum = models.CharField(max_length=255, null=True, blank=True)
 
 	def __str__(self):
 		return '%s %s' %(self.department, self.name)
