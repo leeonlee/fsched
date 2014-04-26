@@ -3,3 +3,4 @@ ghostdriver.log
 staticfiles
 *.pyc
 *.sw*
+*.DS_STORE
