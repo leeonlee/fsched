@@ -28,6 +28,10 @@ def addClasses(request):
 def finalSchedule(request):
 	return render_to_response('schedulizer/finalSchedule.html')
 
+def getSchedules(classes):
+	# classes = [ {"Subj" : value, "Crse" : value } ]
+	print "banana"
+
 @csrf_protect
 def getDars(request):
 	if request.method == 'POST':
