@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
+<!--
 <table id="icon">
 	<tr>
 		<td><img src="{% static "img/AddClassesCircleIcon.png" %}"/></td>
 	</tr>
 </table>
-
+-->
 <div class='container'>
-	<form action="/addclasses/" method="post">{% csrf_token %}
-	{{form.course}}
-	<button class="btn btn-lg btn-primary btn-block button" type="submit">Sign in</button>
-	</form>
+	<div class='row'>
+		<div class='.col-md-6 .col-md-offset-3'>
+			<form action="/addclasses/" method="post">{% csrf_token %}
+			{{form.course}}
+			<button class="btn btn-lg btn-primary btn-block button" type="submit">Sign in</button>
+			</form>
+		</div>
+	</div>
 </div>
-
 
 {% endblock %}
