@@ -58,11 +58,24 @@ class TestCompatibleCourseRefs(unittest.TestCase):
 			CR(22588, (MT(day, early_morning) for day in mwf)),
 			CR(25101, (MT(day, mid_morning) for day in mwf)),
 			CR(17405, (MT(day, noon) for day in mwf)),
-			CR(25636, (MT(day, late_afternoon) for day in mw)),
+			CR(24921, (MT(day, late_afternoon) for day in mw)),
 			CR(20289, (MT(day, early_evening) for day in mw)),
 			CR(17406, (MT(c.TUESDAY, late_morning),)),
 			CR(17407, (MT(c.THURSDAY, late_morning),)),
 			CR(25653, (MT(c.TUESDAY, morning_to_noon),)), # diff
+			CR(14241, (MT(c.TUESDAY, late_evening),)),
+			CR(14250, (MT(c.THURSDAY, late_evening),)),
+		)
+
+		self.bad_course_refs2 = (
+			CR(22588, (MT(day, early_morning) for day in mwf)),
+			CR(25101, (MT(day, mid_morning) for day in mwf)),
+			CR(17405, (MT(day, noon) for day in mwf)),
+			CR(24921, (MT(day, noon) for day in mwf)), # diff
+			CR(20289, (MT(day, early_evening) for day in mw)),
+			CR(17406, (MT(c.TUESDAY, late_morning),)),
+			CR(17407, (MT(c.THURSDAY, late_morning),)),
+			CR(24926, (MT(c.TUESDAY, late_morning),)), # diff
 			CR(14241, (MT(c.TUESDAY, late_evening),)),
 			CR(14250, (MT(c.THURSDAY, late_evening),)),
 		)
@@ -79,6 +92,7 @@ class TestCompatibleCourseRefs(unittest.TestCase):
 		self.assertTrue(compatible_course_refs(*self.good_course_refs))
 		self.assertFalse(compatible_course_refs(*self.bad_course_refs0))
 		self.assertFalse(compatible_course_refs(*self.bad_course_refs1))
+		self.assertFalse(compatible_course_refs(*self.bad_course_refs2))
 
 if __name__ == "__main__":
 	unittest.main()
