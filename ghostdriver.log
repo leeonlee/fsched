@@ -4,3 +4,8 @@ PhantomJS is launching GhostDriver...
 [INFO  - 2014-04-26T13:48:44.607Z] Session [7be29380-cd49-11e3-9576-f7bba95d8262] - page.customHeaders:  - {}
 [INFO  - 2014-04-26T13:48:44.607Z] Session [7be29380-cd49-11e3-9576-f7bba95d8262] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.7","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
 [INFO  - 2014-04-26T13:48:44.607Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 7be29380-cd49-11e3-9576-f7bba95d8262
+[INFO  - 2014-04-26T13:52:34.186Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2014-04-26T13:57:34.280Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2014-04-26T14:02:34.380Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2014-04-26T14:08:57.406Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2014-04-26T14:13:57.505Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
