@@ -1,21 +1,208 @@
-body {
+body{
+	font-family: "Myriad Pro", Myriad;
 	background: #f0ece1;
+}
+
+#banner{
+	position:absolute;
+	top: 10px;
+	z-index: 2;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#banner td{
+	vertical-align: middle;
+	text-align: center;
+}
+
+.nav ul{
+	margin: 20px auto;
+	padding: 0;
+	display: table;
+	list-style: none;
+}
+
+.nav ul li{
+	float: left;
+	padding-right: 100px;
+	padding-left: 100px;
+}
+
+.nav a{
+	color: #333438;
+	position: relative;
+	display: inline-block;
+	margin: 15px 50px;
+	outline: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	font-size: 1.25em;
+}
+
+nav a:hover,
+nav a:focus {
+	outline: none;
+}
+
+.nav{
+	position:relative;
+	margin: 0 auto;
+	text-align: center;
+	z-index: 1;
+	margin-right: 50px;
+	margin-top: 170px;
+	margin-left: 50px;
+	font-size: 30px;
 }
 
 .borders{
 	position:absolute;
 	height: 100%;
 	width: 100%;
-	border: 20px #505155 solid;
+	/* outest border */
+	border: 15px #505155 solid;
 }
 
 .borders::before{
 	position:absolute;
 	display:block;
 	content:'';
+	/* hack to get the darker second color */
 	outline: 5px #333438 solid;
 	height: 100%;
 	width: 100%;
-	border: 40px #505155 solid;
+	/* left right bottom borders */
+	border: 25px #505155 solid;
+	/* top border */
+	border-top: 80px #505155 solid;
     box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
 }
+
+#footer{
+	position: absolute;
+	height: 60px;
+	width: 100%;
+	bottom: 0;
+	background-color: #333438;
+}
+
+#footer ul{
+	margin: 20px auto;
+	padding: 0;
+	display: table;
+	list-style: none;
+}
+
+#footer ul li{
+	float: left;
+	padding-right: 25px;
+}
+
+#footer-banner{
+	background: url(/static/img/FOOTER-BANNER.png) center center no-repeat;
+	position:absolute;
+	bottom: 60px;
+	z-index: 1;
+	width: 300px;
+	height:140px;
+}
+
+/* Effect 3: bottom line slides/fades in */
+.cl-effect-3 a {
+	padding: 2px 0;
+}
+
+.cl-effect-3 a::after {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background: #505155;
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	transform: translateY(10px);
+}
+
+.cl-effect-3 a:hover::after,
+.cl-effect-3 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
+/* icon rows */
+#icon{
+	position:absolute;
+	top: 300px;
+	z-index: 2;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#icon td{
+	vertical-align: middle;
+	text-align: center;
+}
+
+/* inputDars */
+.login{
+	position: relative;
+	top: 50px;
+	height:300px;
+	width: 710px;
+}
+
+.left{
+	position: absolute;
+	height: 300px;
+	width: 300px;
+	left: 0;
+	background: #528c63;
+}
+
+.left .script{
+	position:absolute;
+	top:100px;
+	left: 50px;
+	font-size: 25px;
+}
+
+.left .bubrain{
+	position:absolute;
+	top:125px;
+	left: 35px;
+	font-size: 60px;
+}
+
+.right{
+	position: absolute;
+	padding-top: 50px;
+	height: 300px;
+	width: 400px;
+	right: 0;
+	background: #707176;
+}
+
+.user, .password, .button{
+	position: relative;
+	margin-top: 10px;
+	left: 50px;
+	height: 50px;
+	width: 300px;
+}
+
