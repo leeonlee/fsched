@@ -23,7 +23,6 @@ def addClasses(request):
 def finalSchedule(request):
 	return render_to_response('schedulizer/finalSchedule.html')
 
-@csrf_protect
 def inputDars(request):
 	if request.method == 'POST':
 		print "banana"

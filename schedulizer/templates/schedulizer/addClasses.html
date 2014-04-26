@@ -8,15 +8,16 @@
 	</tr>
 </table>
 -->
-<div class='container'>
-	<div class='row'>
-		<div class='.col-md-6 .col-md-offset-3'>
-			<form action="/addclasses/" method="post">{% csrf_token %}
-			{{form.course}}
-			<button class="btn btn-lg btn-primary btn-block button" type="submit">Sign in</button>
-			</form>
-		</div>
+<div class="container login">
+	<div class="left">
+		<span class="script">Add Classes</span>
+		<span class="bubrain">Get Schedules</span>
+	</div>
+	<div class="right">
+		<form action="/addclasses/" method="post">{% csrf_token %}
+			<div class="middle">{{form.course}}</div>
+			<button class="btn btn-lg btn-primary btn-block button" type="submit">Schedulize</button>
+		</form>
 	</div>
 </div>
-
 {% endblock %}

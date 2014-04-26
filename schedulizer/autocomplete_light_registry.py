@@ -11,7 +11,7 @@ class CourseAutocomplete(autocomplete_light.AutocompleteModelBase):
 			choices = Department.objects.filter(name__icontains=q.upper())
 		if len(q.split()) == 2:
 			dept, num = q.split()
-			choices = Course.objects.filter(department = Department.objects.get(name=dept.upper()), name__startswith=num)
+			choices = Course.objects.filter(department = Department.objects.get(name=dept.upper()), name__startswitht=num)
 			courses = [choice.name for choice in choices]
 			courses = list(set(courses))
 			choices = [Course.objects.filter(department=Department.objects.get(name=dept.upper()), name=name)[0] for name in courses]
