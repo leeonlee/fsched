@@ -1,0 +1,21 @@
+body {
+	background: #f0ece1;
+}
+
+.borders{
+	position:absolute;
+	height: 100%;
+	width: 100%;
+	border: 20px #505155 solid;
+}
+
+.borders::before{
+	position:absolute;
+	display:block;
+	content:'';
+	outline: 5px #333438 solid;
+	height: 100%;
+	width: 100%;
+	border: 40px #505155 solid;
+    box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
+}

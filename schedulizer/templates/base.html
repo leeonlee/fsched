@@ -1,13 +1,19 @@
+<!DOCTYPE html>
 {% load staticfiles %}
 <html>
 	<head>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet" media="screen">
+	    <link href="{% static "css/index.css" %}" rel="stylesheet">
 		{% block extraheaders %} {% endblock %}
 		<title> {% block title %} {% endblock %} </title>
 	</head>
 	<body>
+		<div class="borders">
 		{% block content %} {% endblock %}
 		{% block extrajs %} {% endblock %}
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
