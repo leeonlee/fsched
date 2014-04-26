@@ -11,8 +11,14 @@
 			{% csrf_token %}
 			<input name="username" type="username" class="form-control user" placeholder="Username" required autofocus>
 			<input name="password" type="password" class="form-control password" placeholder="Password" required>
-			<button class="btn btn-lg btn-primary btn-block button" type="submit">Sign in</button>
+			<button class="ladda-button button" data-style="slide-up" data-color="blue" type="submit"><span class="ladda-label">Grab DARS</span></button>
 		</form>
 	</div>
+		
+	<script type="text/javascript" src="{% static "js/spin.min.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/ladda.min.js" %}"></script>
+	<script>
+		Ladda.bind( '.button');
+	</script>
 </div>
 {% endblock %}
