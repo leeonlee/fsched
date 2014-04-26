@@ -1,9 +1,9 @@
-body {
+body{
+	font-family: "Myriad Pro", Myriad;
 	background: #f0ece1;
 }
 
 #banner{
-	border: 1px red dashed;
 	position:absolute;
 	top: 10px;
 	z-index: 2;
@@ -18,9 +18,51 @@ body {
 	text-align: center;
 }
 
+.nav ul{
+	margin: 20px auto;
+	padding: 0;
+	display: table;
+	list-style: none;
+}
+
+.nav ul li{
+	float: left;
+	padding-right: 100px;
+	padding-left: 100px;
+}
+
+.nav a{
+	color: #333438;
+	position: relative;
+	display: inline-block;
+	margin: 15px 50px;
+	outline: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	font-size: 1.25em;
+}
+
+nav a:hover,
+nav a:focus {
+	outline: none;
+}
+
+.nav{
+	position:relative;
+	margin: 0 auto;
+	text-align: center;
+	z-index: 1;
+	margin-right: 50px;
+	margin-top: 170px;
+	margin-left: 50px;
+	font-size: 30px;
+}
+
 .borders{
 	position:absolute;
-	z-index: 0;
 	height: 100%;
 	width: 100%;
 	/* outest border */
@@ -42,7 +84,6 @@ body {
     box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;
 }
 
-
 #footer{
 	position: absolute;
 	height: 60px;
@@ -61,7 +102,6 @@ body {
 #footer ul li{
 	float: left;
 	padding-right: 25px;
-	z-index: 1;
 }
 
 #footer-banner{
@@ -72,4 +112,35 @@ body {
 	width: 300px;
 	height:140px;
 }
+
+/* Effect 3: bottom line slides/fades in */
+.cl-effect-3 a {
+	padding: 2px 0;
+}
+
+.cl-effect-3 a::after {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background: #505155;
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	-webkit-transform: translateY(10px);
+	-moz-transform: translateY(10px);
+	transform: translateY(10px);
+}
+
+.cl-effect-3 a:hover::after,
+.cl-effect-3 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
 
