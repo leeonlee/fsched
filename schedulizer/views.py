@@ -18,12 +18,22 @@ BU_BRAIN = "https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"
 SELECT_TERM = "https://ssb.cc.binghamton.edu/banner/hwskzdar.P_CheckAudit"
 LOGIN_ELEMENT = "sid"
 PASSWORD_ELEMENT = "PIN"
+from forms import CourseForm
 
 def index(request):
 	return render_to_response('schedulizer/index.html')
 
 def addClasses(request):
-	return render_to_response('schedulizer/addClasses.html')
+	if request.method == 'POST':
+		courses = request.POST.getlist('course')
+		courseList = []
+		for course in courses:
+			courseList.append(Course.objects.get(id = course))
+		print 'courses inputted', courseList
+	form = CourseForm()
+	return render_to_response('schedulizer/addClasses.html',{
+		'form':form,
+	}, RequestContext(request))
 
 def finalSchedule(request):
 	return render_to_response('schedulizer/finalSchedule.html')
