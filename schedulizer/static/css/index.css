@@ -198,6 +198,11 @@ nav a:focus {
 	background: #707176;
 }
 
+.middle{
+	margin: 0, auto;	
+	text-align:center;
+}
+
 .user, .password, .button{
 	position: relative;
 	margin-top: 10px;

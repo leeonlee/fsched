@@ -1,10 +1,23 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
+<!--
 <table id="icon">
 	<tr>
 		<td><img src="{% static "img/AddClassesCircleIcon.png" %}"/></td>
 	</tr>
 </table>
-
+-->
+<div class="container login">
+	<div class="left">
+		<span class="script">Add Classes</span>
+		<span class="bubrain">Get Schedules</span>
+	</div>
+	<div class="right">
+		<form action="/addclasses/" method="post">{% csrf_token %}
+			<div class="middle">{{form.course}}</div>
+			<button class="btn btn-lg btn-primary btn-block button" type="submit">Schedulize</button>
+		</form>
+	</div>
+</div>
 {% endblock %}

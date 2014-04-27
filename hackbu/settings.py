@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'schedulizer',
     'south',
+    'autocomplete_light',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -4,3 +4,4 @@ staticfiles
 *.pyc
 *.sw*
 *.DS_STORE
+*.orig

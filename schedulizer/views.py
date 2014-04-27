@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
@@ -23,14 +23,22 @@ BU_BRAIN = "https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"
 SELECT_TERM = "https://ssb.cc.binghamton.edu/banner/hwskzdar.P_CheckAudit"
 LOGIN_ELEMENT = "sid"
 PASSWORD_ELEMENT = "PIN"
+from forms import CourseForm
 
 def index(request):
 	return render_to_response('schedulizer/index.html')
 
 def addClasses(request):
-	classes = [{"Subj": "CS" , "Crse": "301"}, {"Subj": "CS" , "Crse": "101" }]
-	print getSchedules(classes)
-	return render_to_response('schedulizer/addClasses.html')
+	if request.method == 'POST':
+		courses = request.POST.getlist('course')
+		courseList = []
+		for course in courses:
+			courseList.append(Course.objects.get(id = course))
+		print 'courses inputted', courseList
+	form = CourseForm()
+	return render_to_response('schedulizer/addClasses.html',{
+		'form':form,
+	}, RequestContext(request))
 
 def finalSchedule(request):
 	return render_to_response('schedulizer/finalSchedule.html')
@@ -83,11 +91,26 @@ def getDars(request):
 	if request.method == 'POST':
  		user = request.POST.get('username')
  		pw = request.POST.get('password')
- 		try:
- 			fetchDars(user, pw)
- 		except Exception as e:
- 			pass
+		atts, classes = fetchDars(user, pw)
+		classAttrs = []
+		for att in atts:
+			if att != 'MUSP':
+				print att
+				classAttrs = Course.objects.filter(attributes=Attribute.objects.get(letter=att))[:5]
+			
+
+		context = RequestContext(request, 
+		{
+			'attrs': classAttrs,
+			'classes' : classes,
+		})
+		
+		return render_to_response('schedulizer/recommend.html', context_instance=context)
+		
 	return render_to_response('schedulizer/getDars.html', RequestContext(request))
+
+def recommend(request, atts, classes):
+	return render_to_response('schedulizer/recommend.html')
 
 def fetchDars(USER, PW):
 	# get number of subjects in next term
@@ -123,3 +146,4 @@ def fetchDars(USER, PW):
 
 	print attributesNeeded
 	print classesNeeded
+	return attributesNeeded, classesNeeded

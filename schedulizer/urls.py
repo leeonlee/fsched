@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^addclasses/$', views.addClasses, name='addClasses'),
     url(r'^finalschedule/$', views.finalSchedule, name='finalSchedule'),
     url(r'^getdars/$', views.getDars, name='getDars'),
-
+    url(r'^recommend/$', views.recommend, name='recommend'),
 ]
