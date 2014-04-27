@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import render_to_response
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
@@ -47,11 +47,26 @@ def getDars(request):
 	if request.method == 'POST':
  		user = request.POST.get('username')
  		pw = request.POST.get('password')
- 		try:
- 			fetchDars(user, pw)
- 		except Exception as e:
- 			pass
+		atts, classes = fetchDars(user, pw)
+		classAttrs = []
+		for att in atts:
+			if att != 'MUSP':
+				print att
+				classAttrs = Course.objects.filter(attributes=Attribute.objects.get(letter=att))[:5]
+			
+
+		context = RequestContext(request, 
+		{
+			'attrs': classAttrs,
+			'classes' : classes,
+		})
+		
+		return render_to_response('schedulizer/recommend.html', context_instance=context)
+		
 	return render_to_response('schedulizer/getDars.html', RequestContext(request))
+
+def recommend(request, atts, classes):
+	return render_to_response('schedulizer/recommend.html')
 
 def fetchDars(USER, PW):
 	# get number of subjects in next term
@@ -87,3 +102,4 @@ def fetchDars(USER, PW):
 
 	print attributesNeeded
 	print classesNeeded
+	return attributesNeeded, classesNeeded

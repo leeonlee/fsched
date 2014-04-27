@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<div class="container">
+	{% for attr in attrs %}
+		{{ attr }}
+	{% endfor %}
+</div>
+<div class="container login">
+</div>
+{% endblock %}
