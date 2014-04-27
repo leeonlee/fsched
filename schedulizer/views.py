@@ -13,6 +13,11 @@ import datetime
 import os
 from lxml import html
 import time
+import collections
+import itertools
+
+import courses
+import course_refs
 
 BU_BRAIN = "https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"
 SELECT_TERM = "https://ssb.cc.binghamton.edu/banner/hwskzdar.P_CheckAudit"
@@ -23,6 +28,8 @@ def index(request):
 	return render_to_response('schedulizer/index.html')
 
 def addClasses(request):
+	classes = [{"Subj": "CS" , "Crse": "301"}, {"Subj": "CS" , "Crse": "101" }]
+	print getSchedules(classes)
 	return render_to_response('schedulizer/addClasses.html')
 
 def finalSchedule(request):
@@ -30,7 +37,46 @@ def finalSchedule(request):
 
 def getSchedules(classes):
 	# classes = [ {"Subj" : value, "Crse" : value } ]
-	print "banana"
+	dayConvert = {'M': 0, 'T': 1, 'W': 2, 'R': 3, 'F': 4}
+	dbCourseSets = dict()
+	
+	i = 0
+	for course in classes:
+		courses_per = Course.objects.filter(department = Department.objects.get(name=course['Subj']), name = course['Crse'])
+		dbCourseSets[(course['Subj'], course['Crse'])] = courses_per 
+		i += 1
+
+	dbSuperSet = list(itertools.chain.from_iterable(dbCourseSets.itervalues()))
+	courseList = []
+	crnsToDeptNamePairs = dict()
+	for subj, crse in dbCourseSets:
+		dbSet = dbCourseSets[(subj, crse)]
+		lettersToFamilies = collections.defaultdict(lambda : ([], []))
+		for dbCourse in dbSet:
+			letter = dbCourse.sec or 'A'
+			whichRefs = None
+			if dbCourse.sec and dbCourse.secNum[0] != ' ':
+				whichRefs = 1
+			else:
+				whichRefs = 0
+			crn = dbCourse.crn
+			crnsToDeptNamePairs[crn] = (subj, crse)
+			interval = course_refs.TimeInterval(dbCourse.start, dbCourse.end)
+			meetingTimes = []
+			for day in dbCourse.days:
+				meetingTimes.append(course_refs.MeetingTime(dayConvert[day], interval))
+			lettersToFamilies[letter][whichRefs].append(course_refs.CourseRef(crn, tuple(meetingTimes)))
+		families = tuple(courses.CourseFamily(tuple(lectures), tuple(activities)) \
+			for lectures, activities in lettersToFamilies.itervalues())
+		courseList.append(courses.Course(subj, crse, families))
+	print courseList
+
+	schedules = list(courses.schedules_from_courses(*courseList))
+	print schedules
+	return [[crnsToDeptNamePairs[courseRef.number] + tuple(courseRef) \
+		for courseRef in schedule] \
+		for schedule in schedules \
+	]
 
 @csrf_protect
 def getDars(request):

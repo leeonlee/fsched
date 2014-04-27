@@ -12,7 +12,9 @@ import datetime
 import os
 
 USER = os.environ.get('FSCHED_USER')
+USER = 'dchau3'
 PW = os.environ.get('FSCHED_PW')
+PW = 'Berryking1'
 BU_BRAIN = "https://ssb.cc.binghamton.edu/banner/twbkwbis.P_WWWLogin"
 SELECT_TERM = "https://ssb.cc.binghamton.edu/banner/bwskfcls.p_sel_crse_search"
 LOGIN_ELEMENT = "sid"
