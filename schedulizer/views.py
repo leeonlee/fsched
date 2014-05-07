@@ -63,7 +63,7 @@ def getSchedules(classes):
 		for dbCourse in dbSet:
 			letter = dbCourse.sec or 'A'
 			whichRefs = None
-			if dbCourse.sec and dbCourse.secNum[0] != ' ':
+			if dbCourse.sec and len(dbCourse.secNum) > 1:
 				whichRefs = 1
 			else:
 				whichRefs = 0
@@ -77,10 +77,8 @@ def getSchedules(classes):
 		families = tuple(courses.CourseFamily(tuple(lectures), tuple(activities)) \
 			for lectures, activities in lettersToFamilies.itervalues())
 		courseList.append(courses.Course(subj, crse, families))
-	print courseList
 
 	schedules = list(courses.schedules_from_courses(*courseList))
-	print schedules
 	return [[crnsToDeptNamePairs[courseRef.number] + tuple(courseRef) \
 		for courseRef in schedule] \
 		for schedule in schedules \
